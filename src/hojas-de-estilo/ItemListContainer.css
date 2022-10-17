@@ -1,0 +1,10 @@
+.item-list-container{
+    background-image: url(./libreria.jpg);
+    background-position: center;
+    background-size: cover;      
+    width: 100%;
+    min-height: 470px;  
+    margin-top: 10px;
+    text-align: center;
+    font-size: 30px;  
+}

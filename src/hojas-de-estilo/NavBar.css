@@ -1,0 +1,27 @@
+.h3 {
+    font-family: 'Verdana, sans-serif';
+
+    color: antiquewhite;
+}
+
+.nav {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+a {
+    color: grey;
+    margin: 0px 10px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-size: 20px;
+}
+
+.active {
+    color: #363636;
+    border-bottom: 2px solid grey;
+    font-size: 30px;
+}

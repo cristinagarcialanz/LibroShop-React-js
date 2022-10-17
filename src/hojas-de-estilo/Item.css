@@ -1,0 +1,19 @@
+.item{    
+    width: 220px;
+    height: 510px;
+    margin: 10px;
+    background-color: antiquewhite;  
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .item-info{    
+    color:gray;
+    font-size: 20px;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .item img{
+    width: 100%;    
+  }

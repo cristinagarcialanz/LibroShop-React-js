@@ -1,0 +1,41 @@
+.container-count {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: auto;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  background-color: floralwhite;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 1px #ccc;
+}
+
+.count-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.count-btn button {
+  background-color: antiquewhite;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.count-btn button:disabled {
+  opacity: 0.3;
+}
