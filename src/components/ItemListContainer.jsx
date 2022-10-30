@@ -1,38 +1,47 @@
 import React from 'react';
+import '../hojas-de-estilo/ItemListContainer.css';
 import ItemList from './ItemList';
 import { products } from './Products';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CircleLoader from 'react-spinners/CircleLoader';
 
 function ItemListContainer() {
 // se encarga de traer los productos dentro de una promesa y guardarlos dentro del estado 
 
   const {NombreCategoria} = useParams()
-  // NombreCategoria => Literatura Antigua, Astrología, Arte, Cabala
+  // NombreCategoria => Literatura, Astrología, Arte, Cabala, Cuentos
 
   //Estado
-  const [items, setItems] = useState([])  
+  const [items, setItems] = useState([]);  
+  const [loading, setLoading] = useState(true);
 
   //Efecto
   useEffect(() => {
     const traerProductos = ( ) => {
       return new Promise ((res, rej) => {
         const prodFiltrados = products.filter((prod) => prod.categoria === NombreCategoria);
-        setTimeout( () => { res(NombreCategoria ? prodFiltrados : products); }, 500);
+        setTimeout( () => { res(NombreCategoria ? prodFiltrados : products); }, 1500);
       });
     };
     traerProductos()
-      .then((res) => { setItems(res) })
+      .then((res) => { setItems(res);
+    })
       .catch((error) => { console.log(error);
-    });
+    })
+    .finally(() => setLoading(false));
   }, [NombreCategoria]);
 
-  // el array de dependencia se usa para que el useEffect se renderice una sola vez  
+  // Cuando escucha que nombran una categoría se renderiza el componente  
   
   return(
-    <div className="item-list-container">  
-      <h3 className='h3'> Bienvenidos a su Librería virtual LibroShop. </h3>
-      <ItemList items={items} />
+    <div className="item-list-container">
+      {loading 
+                    ? (<CircleLoader color="#363636" />) 
+                    : (<div><h3 className='h3'> Bienvenidos a su Librería virtual LibroShop </h3>
+      <h3 className='novedades'>Novedades</h3>
+      <ItemList items={items} /></div>)}  
+      
     </div>
   );
 };

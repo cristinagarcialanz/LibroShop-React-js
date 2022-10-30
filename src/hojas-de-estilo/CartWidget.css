@@ -1,8 +1,8 @@
 .cartwidget {
     display: flex;
+    color: #363636;
 }
 
-.icon-cart {
-    color: grey;
+.icon-cart {    
     font-size: 25px;
 }

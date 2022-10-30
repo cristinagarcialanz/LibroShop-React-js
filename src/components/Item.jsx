@@ -1,4 +1,5 @@
 import React from "react";
+import '../hojas-de-estilo/Item.css';
 import { Link } from "react-router-dom";
 
 function Item({ prod }) {
@@ -7,13 +8,16 @@ function Item({ prod }) {
   return (
     <div>
       <article className="item">
-        <img src={prod.img} alt="LibroShop" />
-
-        <div className="item-info">
-          <h4>{prod.titulo}</h4>
-          <h4>${prod.precio}</h4>
-          <h5>{prod.categoria}</h5>
-          <Link to={`/item/${prod.id}`}>ver detalle</Link>
+        <div className="container-imagen">
+        <img className="imagen" src={prod.img} alt="LibroShop" />
+        </div>
+        <div className="item-info">          
+          <h3>{prod.titulo}</h3>
+          <h4>{prod.oferta}</h4>
+          
+          <hr/>
+          <br/>
+          <Link className="detalle" to={`/item/${prod.id}`}>Ver Detalle</Link>
         </div>
       </article>
     </div>

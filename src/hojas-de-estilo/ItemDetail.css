@@ -1,21 +1,20 @@
 /* DETAIL*/
-.item-detail{
-    display: flex;
-    width: 90%;
-    height: 400px;  
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;  
-    align-items: flex-start;
-    background-color: antiquewhite;
-    font-size: 25px;
-    padding: 20px;
-    }
-    
-    .item-detail img{
-    width: 350px;
-    }
-    
-    .add-btn{
-    font-size: 16px;
-    }
+.item-detail {  
+  display: flex;
+  flex-direction: row;    
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: grey;
+  width: 90%;   
+  margin: 30px;
+  padding: 10px;    
+  font-size: 18px;    
+}
+
+.item-detail img {
+  min-width: 25%;
+}
+
+.info-detail {
+  padding: 30px;
+}

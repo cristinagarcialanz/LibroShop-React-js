@@ -1,5 +1,5 @@
 import React from "react";
-import "./hojas-de-estilo/Footer.css";
+import "../hojas-de-estilo/Footer.css";
 
 function Footer(props) {
   return (

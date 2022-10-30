@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {memo} from 'react';
+import "../hojas-de-estilo/ItemList.css";
 import Item from './Item';
 
 function ItemList({ items }) {
@@ -14,4 +15,4 @@ function ItemList({ items }) {
   );
 }
 
-export default ItemList;
+export default memo(ItemList);
