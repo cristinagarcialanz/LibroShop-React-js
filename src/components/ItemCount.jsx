@@ -1,28 +1,32 @@
 import '../hojas-de-estilo/ItemCount.css'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function ItemCount(props) {
-  const [count, setCount] = useState(props.inicial);
-  const { prueba } = props;
+function ItemCount({stock, inicial = 1, prueba}) {
+  
+  const [count, setCount] = useState(inicial);  
 
   const sumar = () => {
-    count < props.stock && setCount(count + 1);
+    count < stock && setCount(count + 1);
     }  
 
   const restar = () => {
-    count > props.inicial && setCount(count - 1);
+    count > 1 && setCount(count - 1);
     }
   
   const add = () => {
     prueba(count);
   };
 
+  useEffect(() => {
+    setCount(inicial)
+  }, [inicial])
+
   return (
     <div className="container-count">
       <div className="count-btn">
-        <button disabled={count === props.stock} onClick={sumar}>+</button>
+        <button disabled={count === stock} onClick={sumar}>+</button>
         <p>{count}</p>
-        <button disabled={count === props.inicial} onClick={restar}>-</button>
+        <button onClick={restar}>-</button>
       </div>
       <button className="add-btn" onClick={add}>Agregar al Carrito</button>
     </div>

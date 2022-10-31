@@ -32,7 +32,7 @@ function Cart() {
           
         </div>
       ))}
-      <h2>Total: $0</h2>
+      <h2>Total: ${0}</h2>
       <button onClick={deleteAll}>Eliminar todo el carrito</button>
     </div>
   );

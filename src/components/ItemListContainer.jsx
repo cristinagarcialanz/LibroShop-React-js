@@ -1,48 +1,65 @@
-import React from 'react';
-import '../hojas-de-estilo/ItemListContainer.css';
-import ItemList from './ItemList';
-import { products } from './Products';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import CircleLoader from 'react-spinners/CircleLoader';
+import React from "react";
+import "../hojas-de-estilo/ItemListContainer.css";
+import ItemList from "./ItemList";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import CircleLoader from "react-spinners/CircleLoader";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../services/firebaseConfig";
 
 function ItemListContainer() {
-// se encarga de traer los productos dentro de una promesa y guardarlos dentro del estado 
 
-  const {NombreCategoria} = useParams()
-  // NombreCategoria => Literatura, Astrología, Arte, Cabala, Cuentos
-
-  //Estado
-  const [items, setItems] = useState([]);  
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { NombreCategoria } = useParams();
 
-  //Efecto
   useEffect(() => {
-    const traerProductos = ( ) => {
-      return new Promise ((res, rej) => {
-        const prodFiltrados = products.filter((prod) => prod.categoria === NombreCategoria);
-        setTimeout( () => { res(NombreCategoria ? prodFiltrados : products); }, 1500);
+    const collectionProd = collection(db, "productos");
+    const q = query(collectionProd, where("categoria", "==", "Novedades"));
+
+    getDocs(q)
+      .then((res) => {
+        const products = res.docs.map((prod) => {
+          return {
+            id: prod.id,
+            ...prod.data(),
+          };
+        });        
+        setItems(products);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    };
-    traerProductos()
-      .then((res) => { setItems(res);
-    })
-      .catch((error) => { console.log(error);
-    })
-    .finally(() => setLoading(false));
+    return () => setLoading(true);
   }, [NombreCategoria]);
 
-  // Cuando escucha que nombran una categoría se renderiza el componente  
-  
-  return(
+  return (
     <div className="item-list-container">
-      {loading 
-                    ? (<CircleLoader color="#363636" />) 
-                    : (<div><h3 className='h3'> Bienvenidos a su Librería virtual LibroShop </h3>
-      <h3 className='novedades'>Novedades</h3>
-      <ItemList items={items} /></div>)}  
-      
+      {loading ? (
+        <CircleLoader color="#363636" />
+      ) : (
+        <div>
+          <h3 className="h3"> Bienvenidos a su Librería virtual LibroShop </h3>
+
+          <ItemList items={items} />
+        
+          <ul><h2>Tenemos mucho más contenido, visitanos en:</h2>
+        <li>Podcasts.</li>
+        <li>Redes sociales.</li>
+        <li>Blogs.</li>
+        <li>Anuncios publicitarios (Facebook Ads, Google Ads, Instagram Ads…)</li>
+        <li>Amazon.</li>
+        <li>Wattpad y otras plataformas de lectura digital.</li>
+        <li>Email Marketing.</li>
+        </ul>
+        
+        </div>        
+        
+      )}
     </div>
   );
-};
+}
 export default ItemListContainer;

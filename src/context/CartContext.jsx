@@ -28,7 +28,7 @@ function Provider({ children }) {
       if(prodDelCart.id === prodAgregado.id) {
         const prodActualizado = {
           ...prodDelCart, 
-          cantidad: prodDelCart.cantidad + prodAgregado.cantidad
+          cantidad: prodAgregado.cantidad
         };
         return prodActualizado
       } else { return prodDelCart; }
@@ -54,12 +54,21 @@ function Provider({ children }) {
     return acc;
   };
 
-    console.log(cart);
+  // sumar precio total del carrito
+  // for, foreach, for of,  reduce
 
-    //7. A través del value compartimos (estados, funciones, etc.) con todos los children
+
+  const getProductQuantity = (id) => {
+    const product = cart.find((prod) => prod.id === id);
+    return product?.cantidad; 
+  };
+
+  
+
+  //7. A través del value compartimos (estados, funciones, etc.) con todos los children
   return (
     <div>
-      <CartContext.Provider value={{ cart, totalUnidades, addToCart, deleteAll, deleteOne }}>
+      <CartContext.Provider value={{ cart, totalUnidades, addToCart, deleteAll, deleteOne, getProductQuantity }}>
         {children}
       </CartContext.Provider>
     </div>

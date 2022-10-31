@@ -1,41 +1,43 @@
-import React from "react";
 import "../hojas-de-estilo/ItemDetailContainer.css";
 import ItemDetail from "./ItemDetail";
-import { products } from "./Products";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import RingLoader from 'react-spinners/RingLoader'
+import { collection, doc, getDoc } from "firebase/firestore";
+import { db } from "../services/firebaseConfig";
 
 function ItemDetailContainer() {
-  // se encarga de traer los productos dentro de una promesa y guardarlos dentro del estado
-
-  //Estado
+  
   const [item, setItem] = useState({});
   const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
 
-  //Efecto
   useEffect(() => {
-    const traerProducto = () => {
-      return new Promise((res, rej) => {
-        const producto = products.find((prod) => prod.id === Number(id));
-        setTimeout(() => { res(producto); }, 2500);
+    const collectionProd = collection(db, 'productos')
+    const ref = doc(collectionProd, id);
+
+    getDoc(ref)
+    .then((res) => {
+      setItem({
+        id: res.id,
+        ...res.data()
       });
-    };
-    traerProducto()
-      .then( (res) => { setItem(res); })
-      .catch( (error) => { console.log(error); })
-      .finally(() => setLoading(false));
-  }, []);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {setLoading(false)});
+    return () => setLoading(true);
 
-  // el array de dependencia se usa para que el useEffect se renderice una sola vez
-
+  }, [id]);
+  
   return (
     <div className="item-detail-container">
       {loading 
-                    ? (<RingLoader color="#363636" />) 
-                    : ( <ItemDetail item={item} /> )}
+        ? (<RingLoader color="#363636" />) 
+        : ( <ItemDetail item={item} /> )
+      }
     </div>
   );
 }

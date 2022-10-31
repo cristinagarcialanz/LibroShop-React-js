@@ -12,18 +12,17 @@ function NavBar() {
           src="https://res.cloudinary.com/dm8grxewo/image/upload/v1666013386/Librer%C3%ADa/logotipo_v6z6ci.png"
           alt="Logo"
         />
-        <Link to={`/categoria/Novedades`}>
-          <h1>
-            <em>LibroShop</em>
-          </h1>
-        </Link>
+        <Link to={"/"}><h1 className="titulo"><em>LibroShop</em></h1></Link>
+        
       </div>
       <ul className="item-nav">
+        <NavLink to={"/categoria/Novedades"}>Novedades</NavLink>
         <NavLink to={"/categoria/Literatura"}>Literatura</NavLink>
         <NavLink to={"/categoria/Astrología"}>Astrología</NavLink>
         <NavLink to={"/categoria/Arte"}>Arte</NavLink>
         <NavLink to={"/categoria/Cabala"}>Cabala</NavLink>
         <NavLink to={"/categoria/Cuentos"}>Cuentos</NavLink>
+        
       </ul>
 
       <Link to="/cart">
