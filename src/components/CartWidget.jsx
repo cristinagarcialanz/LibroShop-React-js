@@ -9,6 +9,8 @@ function CartWidget() {
     const { totalUnidades } = useContext(CartContext);
     const total = totalUnidades();
 
+    
+
     return(
         <div className="cartwidget">
             <AiOutlineShoppingCart  className="icon-cart"/>

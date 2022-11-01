@@ -54,13 +54,20 @@ function Provider({ children }) {
     return acc;
   };
 
-  // sumar precio total del carrito
-  // for, foreach, for of,  reduce
+  //Precio Total
+  const totalCart = () => {
+    return cart.reduce((acc, product) => 
+    acc += product.cantidad * product.precio, 0)
+  } 
 
 
-  const getProductQuantity = (id) => {
+  const getProductQuantity = (id) => {  
     const product = cart.find((prod) => prod.id === id);
-    return product?.cantidad; 
+    if(product){
+      return product.cantidad
+    }else{
+      return 1
+    }
   };
 
   
@@ -68,7 +75,7 @@ function Provider({ children }) {
   //7. A través del value compartimos (estados, funciones, etc.) con todos los children
   return (
     <div>
-      <CartContext.Provider value={{ cart, totalUnidades, addToCart, deleteAll, deleteOne, getProductQuantity }}>
+      <CartContext.Provider value={{ cart, getProductQuantity, totalCart, totalUnidades, addToCart, deleteAll, deleteOne,  }}>
         {children}
       </CartContext.Provider>
     </div>

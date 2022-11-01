@@ -14,7 +14,7 @@ function Item({ prod }) {
         <div className="item-info">          
           <h3>{prod.titulo}</h3>
           <h4>{prod.oferta}</h4>
-          
+          <h4>{prod.categoria}</h4>
           <hr/>
           <br/>
           <Link className="detalle" to={`/item/${prod.id}`}>Ver Detalle</Link>

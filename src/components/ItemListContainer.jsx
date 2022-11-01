@@ -11,20 +11,24 @@ function ItemListContainer() {
 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const { NombreCategoria } = useParams();
 
   useEffect(() => {
-    const collectionProd = collection(db, "productos");
-    const q = query(collectionProd, where("categoria", "==", "Novedades"));
+    const collectionProd = collection(db, 'productos');
+    
+    const referencia = NombreCategoria
+      ? query(collectionProd, where('categoria', '==', NombreCategoria))
+      : collectionProd
 
-    getDocs(q)
+    getDocs(referencia)
       .then((res) => {
         const products = res.docs.map((prod) => {
           return {
             id: prod.id,
             ...prod.data(),
           };
-        });        
+        });   
         setItems(products);
       })
       .catch((error) => {
@@ -41,21 +45,10 @@ function ItemListContainer() {
       {loading ? (
         <CircleLoader color="#363636" />
       ) : (
-        <div>
-          <h3 className="h3"> Bienvenidos a su Librería virtual LibroShop </h3>
+        <div>        
 
           <ItemList items={items} />
-        
-          <ul><h2>Tenemos mucho más contenido, visitanos en:</h2>
-        <li>Podcasts.</li>
-        <li>Redes sociales.</li>
-        <li>Blogs.</li>
-        <li>Anuncios publicitarios (Facebook Ads, Google Ads, Instagram Ads…)</li>
-        <li>Amazon.</li>
-        <li>Wattpad y otras plataformas de lectura digital.</li>
-        <li>Email Marketing.</li>
-        </ul>
-        
+          
         </div>        
         
       )}

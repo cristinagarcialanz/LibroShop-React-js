@@ -5,7 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 //import { Link } from "react-router-dom";
 
 function Cart() {
-  const { cart, deleteAll, deleteOne } = useContext(CartContext);
+  const { cart, deleteAll, deleteOne, totalCart } = useContext(CartContext);
 
   if (cart.length === 0) {
     return <h1>Aún no hay productos en el carrito</h1>;
@@ -32,7 +32,7 @@ function Cart() {
           
         </div>
       ))}
-      <h2>Total: ${0}</h2>
+      <h2>Total: ${totalCart()}</h2>
       <button onClick={deleteAll}>Eliminar todo el carrito</button>
     </div>
   );
