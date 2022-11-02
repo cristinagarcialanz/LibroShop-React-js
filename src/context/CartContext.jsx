@@ -1,23 +1,15 @@
 import React from "react";
 import { createContext, useState } from "react";
 
-//1. Creamos el contexto y los exportamos
 export const CartContext = createContext();
 
-//2. Creamos el componente proveedor, que nos sirve para envolver el contexto: contiene funciones, variables, estados, etc.
-
-//3. Importamos el componente proveedor a donde lo vamos a usar
-
-//4. Hacemos uso de la prop children para visualizar todos los componentes
 function Provider({ children }) {
-  // 5. Creamos un estado en caso de que lo necesitemos
+  
   const [cart, setCart] = useState([]);  
 
-  //6. Creamos funciones para manipular el estado del contexto
   const addToCart = (item, cantidad) => {
     const producto = { ...item, cantidad };
     if (isInCart(producto.id)) {
-      // sumo la cantidad
       sumarCantidad(producto);
     } else {
       setCart([...cart, producto]);
@@ -58,8 +50,7 @@ function Provider({ children }) {
   const totalCart = () => {
     return cart.reduce((acc, product) => 
     acc += product.cantidad * product.precio, 0)
-  } 
-
+  };
 
   const getProductQuantity = (id) => {  
     const product = cart.find((prod) => prod.id === id);
@@ -68,14 +59,19 @@ function Provider({ children }) {
     }else{
       return 1
     }
-  };
-
+  };  
   
-
-  //7. A través del value compartimos (estados, funciones, etc.) con todos los children
   return (
     <div>
-      <CartContext.Provider value={{ cart, getProductQuantity, totalCart, totalUnidades, addToCart, deleteAll, deleteOne,  }}>
+      <CartContext.Provider value={{ 
+                              cart, 
+                              getProductQuantity, 
+                              totalCart, 
+                              totalUnidades, 
+                              addToCart, 
+                              deleteAll, 
+                              deleteOne,
+                            }}>
         {children}
       </CartContext.Provider>
     </div>

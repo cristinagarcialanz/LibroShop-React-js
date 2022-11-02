@@ -1,0 +1,21 @@
+.contenedor {
+  margin: 20px;
+  padding: 20px;
+}
+
+.formulario {
+  min-height: "70vh";
+  display: "flex";
+  flex-direction: "colum";
+  justify-content: "left";
+  align-items: "center";
+  margin: "50px";
+  margin: 20px;
+  padding: 20px;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}

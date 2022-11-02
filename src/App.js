@@ -8,6 +8,7 @@ import Form from "./components/Form";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Provider from "./context/CartContext";
+import Home from "./components/Home"
 
 
 function App() {
@@ -17,12 +18,12 @@ function App() {
         <NavBar />
 
         <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          
+          <Route path="/" element={<Home />} />
+          <Route path="/todos" element={<ItemListContainer/>} />
           <Route path="/categoria/:NombreCategoria" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/form" element={<Form />} />
+          <Route path="/cart" element={<Cart />} />          
+          <Route path="/checkout" element={<Form />} />
 
           <Route path="*" element={<h2>¡Página no encontrada!</h2>} />
         </Routes>

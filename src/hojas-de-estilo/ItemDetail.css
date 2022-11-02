@@ -5,14 +5,17 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   color: grey;
-  width: 90%;   
+  width: 90%;
+  min-height: 400px;   
   margin: 30px;
   padding: 10px;    
-  font-size: 18px;    
+  font-size: 18px; 
+  box-shadow: 5px 10px 10px 0px #363636   
 }
 
 .item-detail img {
-  min-width: 25%;
+  min-width: 35%;
+  min-height: 50%;
 }
 
 .info-detail {

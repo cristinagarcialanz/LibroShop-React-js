@@ -33,17 +33,18 @@
 }
 
 .detalle {
-  background-color: grey;
-  color: #ccc;
+  background-color: #ccc;
+  color: #363636;
   justify-content: center;
   text-align: center;
   padding: 2px;
   border-radius: 5px;
-  border: 2px solid #363636;
+  border: 2px solid grey;
   
 }
 
 .detalle:hover {
-  background-color: #363636;
-  color: #ccc;
+  background-color: grey;
+  color: lightgrey;
+  box-shadow: 5px 10px 10px 0px #363636;
 }

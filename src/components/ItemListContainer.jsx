@@ -46,7 +46,7 @@ function ItemListContainer() {
         <CircleLoader color="#363636" />
       ) : (
         <div>        
-
+          <h3 className="h3"> LibroShop... Tu Librería Virtual</h3>
           <ItemList items={items} />
           
         </div>        

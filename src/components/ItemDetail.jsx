@@ -29,6 +29,7 @@ function ItemDetail({ item }) {
         />
 
       <img src={item.img} alt='Detalle del Artículo'/>
+
       <div className="info-detail">
         <h2>{item.titulo}</h2>
         <h4>${item.precio}</h4>
@@ -36,10 +37,15 @@ function ItemDetail({ item }) {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, minus
         officia? Vel laborum modi exercitationem voluptas dolorem similique,
         deleniti?</p>
+        <br />
+        {unidades === 0 ? (<ItemCount prueba={prueba} inicial={quantity} stock={item.stock} />) : (<Link to='/cart'><h4><em>Ir al Carrito</em></h4></Link>)}
         
-        {unidades === 0 ? (<ItemCount prueba={prueba} inicial={quantity} stock={item.stock} />) : (<Link to='/cart'>Ir al carrito</Link>)}
+        <Link to={`/todos`}>
+          <h4>
+            <em>Ir a la Galería de Productos</em>
+          </h4>
+        </Link>
 
-        
       </div>
     </div>
   );
