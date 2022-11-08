@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import '../hojas-de-estilo/Form.css';
 import { CartContext } from "../context/CartContext";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../services/firebaseConfig";
@@ -69,9 +70,7 @@ function Form() {
       <div>
         <h1>Gracias por su compra...</h1>
         <h2>Su número de seguimiento es: {orderId}</h2>
-        <h3>Datos: </h3>
-        <h3>Productos: </h3>
-        <h3>Monto Total: </h3>
+        
 
         <Link to={`/todos`}>
           <h2 className="mensaje">
@@ -88,9 +87,10 @@ function Form() {
       <h3>Completa los datos para generar la orden de compra</h3>
 
       <div className="formulario">
-        <form onSubmit={handleSubmit} action="">
+        
+        <form className="tarea-formulario" onSubmit={handleSubmit} action="">
           <p>Nombre</p>
-          <input
+          <input className="tarea-input"
             type="text"
             name="nombre"
             placeholder=" nombre..."
@@ -98,7 +98,7 @@ function Form() {
             value={name}
           />
           <p>Apellido</p>
-          <input
+          <input className="tarea-input"
             type="text"
             name="apellido"
             placeholder=" apellido..."
@@ -106,7 +106,7 @@ function Form() {
             value={lastName}
           />
           <p>Dirección</p>
-          <input
+          <input className="tarea-input"
             type="text"
             name="direccion"
             placeholder=" dirección..."
@@ -114,7 +114,7 @@ function Form() {
             value={direccion}
           />
           <p>Teléfono</p>
-          <input
+          <input className="tarea-input"
             type="text"
             name="telefono"
             placeholder=" teléfono..."
@@ -122,15 +122,15 @@ function Form() {
             value={telefono}
           />
           <p>Correo Electrónico</p>
-          <input
+          <input className="tarea-input"
             type="mail"
             name="mail"
             placeholder=" mail..."
             onChange={handleChangeMail}
             value={mail}
           />
-          <p>Repite tu Correo Electrónico</p>
-          <input
+          <p>Repite Correo Electrónico</p>
+          <input className="tarea-input"
             type="mailRepeat"
             name="mailRepeat"
             placeholder=" mailRepeat..."
@@ -142,7 +142,7 @@ function Form() {
             <input type="checkbox" /> <p>Acepto los terminos</p>
           </div>
           <br />
-          <button>{loading ? "Enviando" : "Enviar"}</button>
+          <button className="tarea-boton">{loading ? "Enviando..." : "Enviar"}</button>
         </form>
       </div>
     </div>

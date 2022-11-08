@@ -1,0 +1,33 @@
+.tarea-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarea-input {
+  width: 350px;
+  font-size: 18px;
+  background-color: aliceblue;
+  padding: 10px 20px 12px 14px;
+  border-radius: 4px 0px 0px 4px;
+  border: 2px solid grey;
+  outline: none;
+}
+
+.tarea-input:focus{
+  border: 5px solid rgb(78, 76, 75);
+}
+
+.tarea-boton {
+  padding: 11.5px;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 0px 4px 4px 0px;
+  cursor: pointer;
+  outline: none;
+  background: green;
+  color: #ccc;
+  text-transform: capitalize;  
+}
